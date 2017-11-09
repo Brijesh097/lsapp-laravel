@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     // Return index view
     public function index () {
-        $title = 'Welcome to Laravel';
+        $title = 'Welcome to Laravel :)';
 
         // Passing value into blade template using WITH method
         return view('pages.index')->with('title', $title);
