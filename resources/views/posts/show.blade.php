@@ -4,7 +4,8 @@
     <a href="/posts" class="btn btn-default">Go Back</a>
     <h1>{{$post->title}}</h1>
     <div>
-        {{$post->body}}
+        <!-- Used double exclamation instead of double curly braces to parse the HTML from the ckeditor -->
+        {!!$post->body!!}
     </div>
     <hr>
     <small>Written on {{$post->created_at}}</small>
