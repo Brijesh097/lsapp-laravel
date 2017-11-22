@@ -1,38 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{config('app.name', 'LSAPP')}}</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Bootstrap Stylesheet -->        
-        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Internal style -->
-        <style>
-            .fix {
-                margin-top: 65px;
-            }
-            h1 {
-                font-size: 45px !important;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Navbar -->
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
         @include('inc.navbar')
-        
-        <!-- Content -->
-        <div class="container fix">
+        <div class="container">
             @include('inc.messages')
-            @yield('content')        
+            @yield('content')
         </div>
+    </div>
 
-        <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-        <script>
-            CKEDITOR.replace( 'article-ckeditor' );
-        </script>
-    </body>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'article-ckeditor' );
+    </script>
+</body>
 </html>
