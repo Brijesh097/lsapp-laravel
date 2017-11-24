@@ -2,16 +2,21 @@
 
 @section('content')
     <a href="/posts" class="btn btn-default">Go Back</a>
-    <h1>{{$post->title}}</h1>
     <hr>
-    <img style="width: 100%;" src="/storage/cover_images/{{$post->cover_image}}">
+    <center>
+        <h1>{{$post->title}}</h1>
+        <hr>
+        <img class="img-thumbnail" style="width: 50%; height: 50%;" src="/storage/cover_images/{{$post->cover_image}}">
+    </center>
     <hr>
     <div>
         <!-- Used double exclamation instead of double curly braces to parse the HTML from the ckeditor -->
         {!!$post->body!!}
     </div>
-    <hr>
-    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+    <br>
+    <div align="right">
+        <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+    </div>
     <hr>
     @if(!Auth::guest())
         @if(Auth::user()->id == $post->user->id)
@@ -20,6 +25,7 @@
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
+            <hr>
         @endif
     @endif
 @endsection
